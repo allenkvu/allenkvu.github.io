@@ -1,0 +1,145 @@
+html,
+body {
+  background-color: #bf8040;
+  height: 100%;
+  margin: 0;
+  padding: 0
+}
+
+.centering {
+  float: none;
+  margin: 0 auto;
+}
+.row-centered {
+  text-align: center;
+}
+.row-fluid {
+  height: 100%;
+  display: table-cell;
+  
+  vertical-align: middle;
+}
+.container-fluid {
+  height: 100%;
+  display: table;
+  width: 100%;
+  padding: 0;
+}
+
+
+.col-centered {
+  display: inline-block;
+  float: none;
+  /* reset the text-align */
+  text-align: left;
+  /* inline-block space fix */
+  margin-right: -4px;
+  vertical-align: top;
+}
+
+.col-fixed {
+  /* custom width */
+  width: 320px;
+}
+
+.col-min {
+  /* custom min width */
+  min-width: 320px;
+}
+
+.col-max {
+  /* custom max width */
+  max-width: 500px;
+}
+
+
+#data {
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+}
+
+.subText {
+  font-weight: normal;
+  font-size: 20px;
+}
+
+.button {
+  background-color: #bf8040;
+  border: 2px solid white;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.buttonBottom {
+  padding: 5px 15px;
+}
+
+.buttonEpLink {
+  width: 300px;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s;
+  font-size: 20px;
+  padding: 12px;
+  text-shadow: 1px 1px gray;
+}
+
+.buttonCrunchy {
+  background-color: #E79545;
+  color: white;
+  border: 2px solid white;
+}
+
+.buttonCrunchy:hover {
+  background-color: #c66f1a;
+  color: white;
+}
+
+.buttonHulu {
+  background-color: #7AC141;
+  color: white;
+  border: 2px solid white;
+}
+
+.buttonHulu:hover {
+  background-color: #619A34;
+  color: white;
+}
+
+.block {
+  color: #fff;
+  background: #bf8040;
+  padding: 20px;
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+  border-radius: 1px;
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+}
+
+.animeTitle {
+  font-weight: bold;
+  font-size: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.plotText {
+  font-size: 16px;
+}
+.ep1Text {
+  font-size: 15px;
+}
+.margin-bottom {
+  margin-bottom: 35px;
+}
+
+.margin-bottom-sm {
+  margin-bottom: 5px;
+}
