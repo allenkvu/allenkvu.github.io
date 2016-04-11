@@ -10,22 +10,24 @@ body {
   float: none;
   margin: 0 auto;
 }
+
 .row-centered {
   text-align: center;
 }
+
 .row-fluid {
   height: 100%;
   display: table-cell;
   
   vertical-align: middle;
 }
+
 .container-fluid {
   height: 100%;
   display: table;
   width: 100%;
   padding: 0;
 }
-
 
 .col-centered {
   display: inline-block;
@@ -51,7 +53,6 @@ body {
   /* custom max width */
   max-width: 500px;
 }
-
 
 #data {
   color: white;
@@ -130,12 +131,23 @@ body {
   padding-top: 5px;
   padding-bottom: 5px;
 }
+
+.plotSummary{
+  font-size: 25px;
+}
+
 .plotText {
   font-size: 16px;
 }
+
 .ep1Text {
   font-size: 15px;
 }
+
+.miniInfo{
+  font-size: 12px;
+}
+
 .margin-bottom {
   margin-bottom: 35px;
 }
