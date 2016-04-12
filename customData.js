@@ -1,4 +1,4 @@
-{
+var animeCustomDatas = {
     ".hack//Legend of the Twilight": {
         "customImage": "https://static.hummingbird.me/anime/poster_images/000/000/273/large/273.jpg?1408441098",
         "customPlot": "null",
@@ -2979,6 +2979,12 @@
         "episodeLink": {
             "animenetwork": "http://www.theanimenetwork.com/Watch-Anime/Fate-Stay-Night-Unlimited-Blade-Works",
             "hulu": "http://www.hulu.com/fate-stay-night-unlimited-blade-works-movie"
+        }
+    },
+	"Fighting Spirit": {
+        "customImage": "https://static.hummingbird.me/anime/poster_images/000/000/238/large/hajime_20no_20ippo.jpg?1416276267",
+        "customPlot": "null",
+        "episodeLink": {
         }
     },
     "Fist of the North Star": {
@@ -7916,7 +7922,7 @@
     },
     "Puella Magi Madoka Magica": {
         "customImage": "https://static.hummingbird.me/anime/poster_images/000/005/853/large/mahou.jpg?1409433346",
-        "customPlot": "null",
+        "customPlot": "Watch till episode 3 then decide",
         "episodeLink": {
             "crunchyroll": "http://www.crunchyroll.com/puella-magi-madoka-magica",
             "hulu": "http://www.hulu.com/puella-magi-madoka-magica",
@@ -8730,9 +8736,9 @@
             "viewster": "https://www.viewster.com/serie/1302-19414-000"
         }
     },
-    "School Live!": {
-        "customImage": null,
-        "customPlot": "null",
+    "School-Live!": {
+        "customImage": "http://cdn.myanimelist.net/images/anime/4/75069l.jpg",
+        "customPlot": "Watch episode 1 then decide",
         "episodeLink": {
             "animenetwork": "http://www.theanimenetwork.com/Watch-Anime/School-Live",
             "crunchyroll": "http://www.crunchyroll.com/school-live",

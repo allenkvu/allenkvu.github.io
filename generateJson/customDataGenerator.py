@@ -10,6 +10,7 @@ with open('because-moe/bcmoe.json') as data_file:
     bcmoeJson = json.load(data_file)
 
 for val in bcmoeJson:	
+	print(val['name'])
 	epLink = val['sites']
 	image = getImageLink(val['name'])
 	#image = 'null'

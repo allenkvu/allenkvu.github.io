@@ -12,7 +12,7 @@ def getImageLink(animeTitle):
 	if(response.ok):
 		jsonData = response.json()
 		for entry in jsonData:
-			if(entry['title'] == animeTitle ): # == to avoid movie or ova
+			if(entry['title'] == animeTitle) or (entry['alternate_title'] == animeTitle ): # == to avoid movie or ova
 				animeInfo = entry
 				print(animeTitle) # print to see progress on console
 				return animeInfo['cover_image']

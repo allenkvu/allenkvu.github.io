@@ -1,23 +1,42 @@
 
 var stack = []; //use to go back previous question
+var regiion;
 
-$(".start").click(function() {
-  stack.push(treeData);
-  $('#resetButton').toggle();
-  traverseTree(treeData);
+$(document).ready(function() {
+	stack.push(treeData);
+	traverseTree(treeData);
 });
 
+
 $(".backBtn").click(function() {
-  if (stack.length > 0)
+  if (stack.length > 2)
     traverseTree(stack.pop());
+  else if(stack.length == 2){//clicking back at this point is same thing as resetting
+	reset();
+  }
 });
 
 $(".resetBtn").click(function() {
-  //location.reload();
+  reset();
 });
 
+var reset = function(){
+	stack.splice(0,stack.length)
+	stack.push(treeData);
+	$('#resetButton').toggle();
+	traverseTree(treeData);
+}
 var traverseTree = function(treeNode) {
-  $("#data").text(treeNode.question);
+	console.log(stack.length);
+ if(stack.length == 2 && $('#resetButton').is(':hidden')){// 2 = user clicked start
+	 $('#resetButton').toggle();
+ }
+  $("#data .title").text(treeNode.question);
+  
+  if(treeNode.sub != null)
+	$("#data .sub").text(treeNode.sub);
+  else
+	$("#data .sub").text("");
 
   var count = Object.keys(treeNode.children).length;
 
@@ -33,7 +52,6 @@ var traverseTree = function(treeNode) {
         id: i,
         value: obj.label,
         click: function() {
-
           getNode(treeNode, this.value, function(target) {
             stack.push(treeNode);
             traverseTree(target);
@@ -63,7 +81,7 @@ var getNode = function(container, value, callback) {
 
 var prepareAnimePanel = function(labelTitle, customNeeded) {
 
-  $("#data").text("You should watch");
+  $("#data .title").text("You should watch");
 
   $(".backBtn").prop("disabled", true); //disable back button till animePanel loads
   var customPlotNeeded = false;
@@ -77,7 +95,7 @@ var prepareAnimePanel = function(labelTitle, customNeeded) {
     var animeTitle = $(target).attr("name");
     var plot = $(target).find("info[type='Plot Summary']").text();
     var epCount = $(target).find("info[type='Number of episodes']").text();
-    var airDate = $(target).find("info[type='Vintage']").first().text()
+    var airYear = $(target).find("info[type='Vintage']").first().text().slice(0,4);
     var imageLocation = $(target).find("info[type='Picture']");
     var images = $(imageLocation).find("img");
     var imageSrc;
@@ -87,7 +105,7 @@ var prepareAnimePanel = function(labelTitle, customNeeded) {
 
     plot += "<br><a href='http://www.animenewsnetwork.com/encyclopedia/anime.php?id=" + animeId + "'  target='_blank'><font size='2'>(source:  Anime News Network)</font></a>"; //add source+link
 
-    var ep1LinkObj;
+    var ep1LinkObj = null;
     var customDataArr = animeCustomDatas[animeTitle];
 
     //assign custom info if needed
@@ -95,46 +113,55 @@ var prepareAnimePanel = function(labelTitle, customNeeded) {
       if (customPlotNeeded && customDataArr.customPlot != null) {
         plot = customDataArr.customPlot;
       }
-      if (customDataArr.ep1Links != null) {
-        ep1LinkObj = customDataArr.ep1Links; //obj containing "site name : ep1 links"
+      if (Object.keys(customDataArr.episodeLink).length != 0) {
+        ep1LinkObj = customDataArr.episodeLink; //obj containing "site name : ep1 links"
       }
       if (customDataArr.customImage != null) {
         imageSrc = customDataArr.customImage;
       }
     }
 
-    createAnimePanel(animeTitle, plot, epCount, airDate, imageSrc, ep1LinkObj);
+    createAnimePanel(animeTitle, plot, epCount, airYear, imageSrc, ep1LinkObj);
   });
 }
 
 //creates panel with anime info
-var createAnimePanel = function(animeTitle, plot, epCount, airDate, imageSrc, ep1LinkObj) { //needs rating
+var createAnimePanel = function(animeTitle, plot, epCount, airYear, imageSrc, ep1LinkObj) { //needs rating
   var ep1Button = "";
   var siteColor;
-  console.log(ep1LinkObj);
+  
   if (ep1LinkObj != null) {
-    ep1Button += "<div class ='ep1Text text-center' >Watch Episode 1 on: ";
+    ep1Button += "<div class ='ep1Text text-center' >Watch it on <br>";
 
     $.each(ep1LinkObj, function(siteName, link) {
-
+	  var supportedStreamSites = true; //Supported: Crunchyroll, Hulu, Funimation, need Youtube, daisuki
+	  
       switch (siteName) {
-        case "Crunchyroll":
+        case "crunchyroll":
           siteColor = "buttonCrunchy";
           break;
-        case "Hulu":
+        case "hulu":
           siteColor = "buttonHulu";
           break;
+		case "netflix":
+          siteColor = "buttonNetflix";
+          break;
+		case "funimation":
+          siteColor = "buttonFunimation";
+          break;
         default:
-          siteColor = "";
+          supportedStreamSites = false;
       }
-      ep1Button += "<a href=" + link + "  target='_blank' class='button  buttonEpLink " + siteColor + "' role='button'>" + siteName + " </a>"
-    });
+	  if(supportedStreamSites)
+		ep1Button += "<a href=" + link + "  target='_blank' class='button  buttonEpLink " + siteColor + "' role='button'>" + siteName.toUpperCase() + " </a>"
+
+	});
 
     ep1Button += "</div>" //close .ep1Text
   }
 
   //.imagePanel {height:400px;position:relative;display:block;overflow:hidden;}
-  var panel = "<div class='col-md-4 col-centered col-max col-min form-group'><div class='block'> <p class ='animeTitle text-center' > " + animeTitle + "</p> <img class=' img-responsive center-block' src='" + imageSrc + "'> <p class='miniInfo text-left'>Total Episodes:" + epCount +  "<span style='float:right'>Air date: "  + airDate + " </span></p> <p class='plotSummary'>Plot Summary: </p> <p class='plotText text-left'>" + plot + " </p> "
+  var panel = "<div class='col-md-4 col-centered col-max col-min form-group'><div class='block'> <p class ='animeTitle text-center' > " + animeTitle + "</p> <img class=' img-responsive center-block' src='" + imageSrc + "'> <p class='miniInfo text-left'>Total Episodes:" + epCount +  "<span style='float:right'>Year aired on: "  + airYear + " </span></p> <p class='plotSummary'>Plot Summary: </p> <p class='plotText text-left'>" + plot + " </p> "
   ep1Button += "</div> </div></div> "; //closure for panel
   panel += ep1Button; //puts ep1 buttons to panel
 
