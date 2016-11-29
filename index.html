@@ -8,12 +8,28 @@
   </head>
   
  <body>
+ 
+<div id="header">
+  <div class="container">
+    <div class="dropdown sub" style="float:right;">
+      Current Region:
+      <button class="dropbtn">US</button>
+      <div class="dropdown-content">
+        <button class="region" data-value="US">US</button>
+        <button class="region" data-value="AU">AU</button>
+        <button class="region" data-value="CA">CA</button>
+        <button class="region" data-value="FR">FR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container-fluid">
   <div class="row-fluid span3 centering row-centered">
     <div class = "margin-bottom" id="data">
       
-      <div class = "title margin-bottom-sm">Anime Suggestions for Beginners (prototype -jquery)</div>
-      <div class="sub">Find the perfect anime for you</div>
+      <div class = "title margin-bottom-sm">Loading</div>
+      <div class="sub">It should not take longer than 2 second</div>
       
     </div>
     
@@ -33,10 +49,7 @@
   </div>
 </div>
 
-<footer class="footer">
-<div class="container">
-</div>
-</footer>
+
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="data.js"></script>

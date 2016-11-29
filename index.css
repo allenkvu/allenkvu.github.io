@@ -54,7 +54,7 @@ body {
   max-width: 500px;
 }
 
-#data {
+.title {
   color: white;
   font-weight: bold;
   font-size: 40px;
@@ -62,6 +62,7 @@ body {
 }
 
 .sub {
+  color: white;
   font-weight: normal;
   font-size: 20px;
 }
@@ -176,4 +177,61 @@ body {
 
 .margin-bottom-sm {
   margin-bottom: 5px;
+}
+
+/*drop down css*/
+
+/*drop down css*/
+
+.dropbtn {
+  color: white;
+  background-color: #bf8040;
+  font-size: 16px;
+  /*position: relative;*/
+  /*bottom: 0px;*/
+  padding: 5px 17px;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  text-align: center;
+  font-size: 16px;
+  /*bottom: 100%;*/
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #bf8040;
+  min-width: 60px;
+  cursor: pointer;
+  /*box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);*/
+}
+
+.dropdown-content .region {
+  color: white;
+  background-color: #ac7339;
+  font-size: 16px;
+  text-decoration: none;
+  display: block;
+  min-width: 60px;
+  padding: 5px;
+  border: 2px solid white;
+}
+
+.dropdown-content .region:hover {
+  display: block;
+  background-color: #bf8040;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  /*background-color: gray; */
 }
